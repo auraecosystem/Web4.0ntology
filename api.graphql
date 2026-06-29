@@ -1,0 +1,13 @@
+GET /api/graphql/?query=query+%7Bdomains+%7Bid%2C+name%2C+introducedAt%2C+expiresAt%2C+availableVia%7D%7D HTTP/1.1
+Host: dropmail.me
+Accept: application/json
+POST /api/graphql/ HTTP/1.1
+Host: dropmail.me
+Content-Type: application/json
+Content-Length: 77
+Accept: application/json
+
+{"query":"query {domains {id, name, introducedAt, expiresAt, availableVia}}"}
+curl https://dropmail.me/api/graphql/ -H 'Content-Type: application/json' \
+ -d '{"query":"query {domains {id, name, introducedAt, expiresAt, availableVia}}"}'
+ 
