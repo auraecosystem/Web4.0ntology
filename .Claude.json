@@ -3,7 +3,7 @@
     "dropmail": {
       "command": "dropmail-mcp",
       "env": {
-        "DROPMAIL_TOKEN": "YOUR_TOKEN"
+        "DROPMAIL_TOKEN": "af_AQVqQl3SHm2Pg09cQHyG0XGCjbm_LRQUzOvMsdGe"
       }
     }
   }
