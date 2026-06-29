@@ -1,0 +1,7 @@
+POST /api/graphql/ HTTP/1.1
+Host: dropmail.me
+Content-Type: application/json
+Content-Length: 258
+Accept: application/json
+
+{"query":"query mailWithHtml($sanitizerConfig: HtmlSanitizerConfig) { sessions { mails { fromAddr headerSubject text sanitizedHtml(sanitizerConfig: $sanitizerConfig) } } }","variables":{"sanitizerConfig":{"imgData":"keep","imgCid":"proxy","imgHttp":"keep"}}}
