@@ -1,0 +1,254 @@
+/**
+ * Web4 Framework
+ * app.nf
+ * Application Configuration
+ */
+
+app {
+
+    name        : "Web4"
+    version     : "1.0.0"
+    codename    : "Aura"
+
+    environment : env("APP_ENV", "production")
+    debug       : env("APP_DEBUG", false)
+
+    url         : env("APP_URL", "http://localhost")
+    timezone    : "UTC"
+    locale      : "en"
+    fallback    : "en"
+
+    charset     : "UTF-8"
+
+    encryption {
+
+        cipher : "AES-256-GCM"
+        key    : env("APP_KEY")
+
+    }
+
+    providers {
+
+        database
+        cache
+        session
+        auth
+        mail
+        queue
+        events
+        scheduler
+        filesystem
+        websocket
+        ai
+        blockchain
+        analytics
+        notifications
+        search
+
+    }
+
+    middleware {
+
+        web
+        api
+        csrf
+        auth
+        guest
+        verified
+        throttle(60, 1)
+        cors
+        localization
+
+    }
+
+    routing {
+
+        web     : "routes/web.nf"
+        api     : "routes/api.nf"
+        console : "routes/console.nf"
+        channels: "routes/channels.nf"
+
+    }
+
+    views {
+
+        engine : "blade.nf"
+
+        layouts {
+
+            default : "layouts/app.blade.nf"
+
+        }
+
+        components {
+
+            path : "resources/components"
+
+        }
+
+    }
+
+    assets {
+
+        css : [
+
+            "resources/css/app.css",
+            "resources/css/theme.css",
+            "resources/css/components.css"
+
+        ]
+
+        js : [
+
+            "resources/js/app.js",
+            "resources/js/dashboard.js"
+
+        ]
+
+        images : "resources/images"
+
+        fonts : "resources/fonts"
+
+    }
+
+    database {
+
+        default : "pgsql"
+
+        migration : true
+
+        seed : true
+
+    }
+
+    cache {
+
+        driver : "redis"
+
+    }
+
+    session {
+
+        driver : "redis"
+
+        lifetime : 120
+
+    }
+
+    queue {
+
+        driver : "redis"
+
+    }
+
+    websocket {
+
+        enabled : true
+
+        endpoint : "/ws"
+
+        heartbeat : 30
+
+    }
+
+    ai {
+
+        enabled : true
+
+        provider : "web4-ai"
+
+        endpoint : "/api/ai"
+
+    }
+
+    blockchain {
+
+        enabled : true
+
+        network : "mainnet"
+
+    }
+
+    mail {
+
+        driver : "smtp"
+
+    }
+
+    storage {
+
+        driver : "local"
+
+    }
+
+    logging {
+
+        level : "info"
+
+        channel : "daily"
+
+    }
+
+    security {
+
+        csp : true
+
+        xss : true
+
+        csrf : true
+
+        hsts : true
+
+    }
+
+    monitoring {
+
+        metrics : true
+
+        tracing : true
+
+        healthcheck : "/health"
+
+    }
+
+    api {
+
+        prefix : "/api"
+
+        version : "v1"
+
+    }
+
+    pwa {
+
+        enabled : true
+
+        manifest : "/manifest.webmanifest"
+
+        service_worker : "/service-worker.js"
+
+    }
+
+    build {
+
+        vite : true
+
+        minify : true
+
+        sourcemaps : false
+
+    }
+
+    plugins {
+
+        load "plugins/*.nf"
+
+    }
+
+    boot {
+
+        initialize()
+
+    }
+
+}
