@@ -8,7 +8,7 @@ app {
 
     name        : "Web4"
     version     : "1.0.0"
-    codename    : "Aurora"
+    codename    : "Aura"
 
     environment : env("APP_ENV", "production")
     debug       : env("APP_DEBUG", false)
